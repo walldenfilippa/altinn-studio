@@ -5,7 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { useAppContext, useGetLayoutSetByName } from '../../hooks';
 import { useChecksum } from '../../hooks/useChecksum.ts';
 import { previewPage } from 'app-shared/api/paths';
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Button, Paragraph } from '@digdir/designsystemet-react';
+import { usePdf } from '../../hooks/usePdf/usePdf';
+import { useDevToolsStore } from '../../../../../features/devtools/DevToolsStore';
+import { useTaskTypeFromBackend } from '../../../../../features/instance/useProcessQuery';
 import {
   StudioCenter,
   StudioAlert,
@@ -18,12 +21,24 @@ import { useCreatePreviewInstanceMutation } from 'app-shared/hooks/mutations/use
 import { useUserQuery } from 'app-shared/hooks/queries';
 import { PreviewActions } from './PreviewActions/PreviewActions';
 import useUxEditorParams from '@altinn/ux-editor/hooks/useUxEditorParams';
+import { FilePdfIcon } from '@studio/icons';
 
 export type PreviewProps = {
   collapsed: boolean;
   onCollapseToggle: () => void;
   hidePreview?: boolean;
 };
+
+export enum ProcessTaskType {
+  Unknown = 'unknown',
+  Service = 'service',
+  Data = 'data',
+  Archived = 'ended',
+  Confirm = 'confirmation',
+  Feedback = 'feedback',
+  Payment = 'payment',
+  Signing = 'signing',
+}
 
 export const Preview = ({ collapsed, onCollapseToggle, hidePreview }: PreviewProps) => {
   const { t } = useTranslation();
@@ -98,6 +113,11 @@ const PreviewFrame = () => {
   const currentLayoutSet = useGetLayoutSetByName({ name: layoutSet, org, app });
   const isSubform = currentLayoutSet?.type === 'subform';
 
+  const { isCurrentPagePdf } = usePdf();
+  const isPDF = isCurrentPagePdf();
+  const setPdfPreview = useDevToolsStore((state) => state.actions.setPdfPreview);
+  const taskType = useTaskTypeFromBackend();
+
   useEffect(() => {
     if (user && taskId) createInstance({ partyId: user?.id, taskId: taskId });
   }, [createInstance, user, taskId]);
@@ -121,6 +141,22 @@ const PreviewFrame = () => {
   }
   const previewURL = previewPage(org, app, layoutSet, taskId, selectedFormLayoutName, instance?.id);
 
+  if (isPDF) {
+    return (
+      <div className={classes.root}>
+        <div className={classes.previewArea}>
+          <Button
+            onClick={() => setPdfPreview(true)}
+            disabled={taskType !== ProcessTaskType.Data}
+            color='second'
+          >
+            <FilePdfIcon fontSize='1rem' aria-hidden />
+            Forhåndsvis PDF
+          </Button>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className={classes.root}>
       {isSubform ? (

@@ -4134,6 +4134,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.13.3":
+  version: 1.13.3
+  resolution: "axios@npm:1.13.3"
+  dependencies:
+    follow-redirects: "npm:^1.15.6"
+    form-data: "npm:^4.0.4"
+    proxy-from-env: "npm:^1.1.0"
+  checksum: 10/2ceca9215671f9c2bcd5d8a0a1a667e9a35f9f7cfae88f25bba773ed9612de6cac50b2bf8be5e6918cbd2db601b4431ca87a00bffd9682939a8b85da9c89345a
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^4.1.0":
   version: 4.1.0
   resolution: "axobject-query@npm:4.1.0"
@@ -10691,6 +10702,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^7.13.0":
+  version: 7.13.0
+  resolution: "react-router-dom@npm:7.13.0"
+  dependencies:
+    react-router: "npm:7.13.0"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 10/7d0f283302710b54a24254aecdfc680832e0f28256a1743f7190e5742ac6072be70c30f731ee9350dcc4ef832d645e701aeef501b9a075da53ce1668d050322c
+  languageName: node
+  linkType: hard
+
 "react-router@npm:6.30.2":
   version: 6.30.2
   resolution: "react-router@npm:6.30.2"
@@ -10699,6 +10722,22 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 10/537bd68aa9e8125e1b20702180d4d875421150280e2c4c039c663a105da05956a457cb4d0f4f6a56605d6cadf9b1c1282dc45a9845f81bdca9bc87364eafc073
+  languageName: node
+  linkType: hard
+
+"react-router@npm:7.13.0":
+  version: 7.13.0
+  resolution: "react-router@npm:7.13.0"
+  dependencies:
+    cookie: "npm:^1.0.1"
+    set-cookie-parser: "npm:^2.6.0"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: 10/8bc0a1eebf37136851ee345e53b137b5a7ec0de10c842861a06810bb54c0a389826734a7454f4afe8731daf39499948ba73657e60a6bd2acb93b3e567fd79127
   languageName: node
   linkType: hard
 
@@ -11910,6 +11949,7 @@ __metadata:
     "@vitejs/plugin-react-swc": "npm:^3.7.2"
     ajv: "npm:8.17.1"
     ajv-formats: "npm:3.0.1"
+    axios: "npm:^1.13.3"
     css-loader: "npm:7.1.2"
     eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-jsx-a11y: "npm:6.10.2"
@@ -11931,7 +11971,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     react-error-boundary: "npm:6.0.1"
     react-i18next: "npm:16.3.5"
-    react-router-dom: "npm:6.30.2"
+    react-router-dom: "npm:^7.13.0"
     react-toastify: "npm:11.0.5"
     source-map-loader: "npm:5.0.0"
     swc-loader: "npm:0.2.6"
@@ -11939,6 +11979,7 @@ __metadata:
     typescript-plugin-css-modules: "npm:5.2.0"
     vite: "npm:^6.3.2"
     whatwg-fetch: "npm:3.6.20"
+    zustand: "npm:^5.0.10"
   languageName: unknown
   linkType: soft
 
@@ -13203,5 +13244,26 @@ __metadata:
   version: 1.2.2
   resolution: "yocto-queue@npm:1.2.2"
   checksum: 10/92dd9880c324dbc94ff4b677b7d350ba8d835619062b7102f577add7a59ab4d87f40edc5a03d77d369dfa9d11175b1b2ec4a06a6f8a5d8ce5d1306713f66ee41
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^5.0.10":
+  version: 5.0.10
+  resolution: "zustand@npm:5.0.10"
+  peerDependencies:
+    "@types/react": ">=18.0.0"
+    immer: ">=9.0.6"
+    react: ">=18.0.0"
+    use-sync-external-store: ">=1.2.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    immer:
+      optional: true
+    react:
+      optional: true
+    use-sync-external-store:
+      optional: true
+  checksum: 10/1a48812ef1f5dc8ead8eb05c9861d1627d4ec79302f3b329cb3029d07e0325c44beb1829d2d2bbc511cf42e4f26be496723813f1117effa1ee10c2e83834c9ff
   languageName: node
   linkType: hard
