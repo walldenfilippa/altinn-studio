@@ -168,7 +168,7 @@ export const changePageOrder = (org: string, app: string, layoutSetName: string,
 export const changePageGroups = (org: string, app: string, layoutSetName: string, pageGroups: PagesModel) => put(layoutPageGroupsPath(org, app, layoutSetName), pageGroups);
 export const convertToPageGroups = (org: string, app: string, layoutSetName: string) => post(layoutConvertToPageGroupsPath(org, app, layoutSetName));
 export const convertToPageOrder = (org: string, app: string, layoutSetName: string) => post(layoutConvertToPageOrderPath(org, app, layoutSetName));
-export const updateValidationOnNavigationLayoutSets = (org: string, app: string, payload: IValidationOnNavigationLayoutSets) => post<IValidationOnNavigationLayoutSets>(`${layoutSetsPath(org, app)}/validation-on-navigation`, payload);
+export const updateValidationOnNavigationLayoutSets = (org: string, app: string, payload?: IValidationOnNavigationLayoutSets) => post<IValidationOnNavigationLayoutSets>(`${layoutSetsPath(org, app)}/validation-on-navigation`, payload);
 
 // Resourceadm
 export const createResource = (org: string, payload: NewResource) => post(resourceCreatePath(org), payload);

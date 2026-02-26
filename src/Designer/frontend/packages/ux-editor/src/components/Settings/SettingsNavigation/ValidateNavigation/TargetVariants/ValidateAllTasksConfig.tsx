@@ -17,7 +17,9 @@ export const ValidateAllTasksConfig = () => {
   const config = useConvertToInternalConfig(tempExtConfig);
   const { mutate: updateLayoutSets } = useValidationOnNavigationLayoutSetsMutation(org, app);
   const handleSave = (updatedConfig: InternalConfigState) => {
-    setTempExtConfig(convertToExternalConfig(updatedConfig));
+    const externalConfig = convertToExternalConfig(updatedConfig);
+    setTempExtConfig(externalConfig);
+    updateLayoutSets(externalConfig);
   };
 
   const handleDelete = () => {
